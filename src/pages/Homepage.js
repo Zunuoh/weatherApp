@@ -28,18 +28,26 @@ const Homepage = () => {
       value={city}
       onKeyPress={getWeather} />
 
-      {typeof weatherData === 'undefined' ? (
+      {typeof weatherData.main === 'undefined' ? (
         <div>
           <p>Welcome to weather app! Enter in a city to get the weather of.</p>
         </div>
       ) : (
-        <div>
-          <p>{weatherData.name}</p>
-          {/* <p>{Math.round(weatherData.main.temp)}ºF</p> */}
-          {/* <p>{weatherData.weather[0].main}</p> */}
+        <div className="weather-data">
+          <p className="city">{weatherData.name}</p>
+          <p className="temp">{Math.round(weatherData.main.temp)}ºF</p>
+          <p className="weather">{weatherData.weather[0].main}</p>
           <p></p>
         </div>
       )}
+
+      {
+        weatherData.cod ==='404' ? (
+          <p>City not found</p>
+        ) : (
+          <p></p>
+        )
+      }
 
 
 
